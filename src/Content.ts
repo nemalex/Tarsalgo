@@ -31,7 +31,19 @@ export default class Content {
         //2. feladat
         res.write("2. feladat\n");
         res.write(`Az első belépő: ${megold.elso_belepo}\n`);
-        res.write(`Az utolsó belépő: ${megold.utolso_belepo}\n`);
+        res.write(`Az utolsó belépő: ${megold.utolso_belepo}\n\n`);
+        megold.belepesek_szama("athaladas.txt");
+        res.write("4. feladat\n");
+        res.write(`A végén a társalgóban voltak: ${megold.bent_maradtak}\n\n`);
+        res.write("5. feladat\n");
+        res.write(`Például ${megold.legtobben_bent}-kor voltak bent a legtöbben a tásalgóban\n\n`);
+        res.write("7. feladat\n");
+        let azonosito_input: number = parseInt(params.input as string);
+        if (isNaN(azonosito_input)) azonosito_input = 22;
+        res.write(`Adja meg a személy azonosítóját! <input type='number' name='input' value=${azonosito_input} style='max-width:40px;' onChange='this.form.submit();'>\n`);
+        res.write(megold.bent_tartozkodott(azonosito_input));
+        res.write("\n8. feladat\n");
+        res.write(`A(z) ${azonosito_input}. személy összesen ${megold.bent_toltott_ido(azonosito_input)} percet volt bent, a megfigyelés végén ${megold.bent_maradt_e(azonosito_input)}.`);
 
         // <---- Fejezd be a kódolást
 
